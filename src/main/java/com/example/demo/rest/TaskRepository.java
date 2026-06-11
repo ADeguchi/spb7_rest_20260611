@@ -76,4 +76,13 @@ public class TaskRepository {
 		return task;
 	}
 	
+	//PUTメソッド用データ1件変更
+	public void updateDb(Long id, Task task) {
+		//変更用SQL
+		String sql = "UPDATE task SET name = ?, completed = ? WHERE id = ?";
+		//変更処理
+		jdbcTemplate.update(sql, task.getName(), task.getCompleted(), id);
+		System.out.println("ID: " + id + " を変更");
+	}
+	
 }
